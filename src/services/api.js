@@ -1,0 +1,64 @@
+import axios from 'axios';
+import qs from 'qs';
+
+
+const API_KEY = 'Q1S3MV9-5K6MT3Y-GD5T16Q-VVTEA81';
+const BASE_URL = 'https://api.kinopoisk.dev/v1.4';
+
+const api = axios.create({
+    baseURL: BASE_URL,
+    headers: {
+        'X-API-KEY': API_KEY,
+    },
+    paramsSerializer: params => {
+        return qs.stringify(params, { arrayFormat: 'repeat' });
+    },
+});
+
+
+export const fetchMovies = async (page = 1) => {
+    try {
+        const response = await api.get('/movie', {
+            params: {
+                limit: 50,
+                page,
+                notNullFields: ['id', 'name', 'rating.kp', 'logo.url'],
+                'rating.kp': '5-10',
+                sortField: ['rating.kp'],
+                sortType: ['-1'],
+                type: ['movie']
+            },
+        });
+        console.log('API Response:', response.data);
+        return response.data.docs || [];
+    } catch (error) {
+        console.error('Error fetching movies:', error.response ? error.response.data : error.message);
+        throw error;
+    }
+};
+
+export const searchMovies = async (query, page = 1) => {
+    try {
+        const response = await api.get('/movie/search', {
+            params: {
+                query,
+                limit: 50,
+                page,
+            },
+        });
+        return response.data.docs || [];
+    } catch (error) {
+        console.error('Error searching movies:', error.response ? error.response.data : error.message);
+        throw error;
+    }
+};
+
+export const fetchMovieDetails = async (id) => {
+    try {
+        const response = await api.get(`/movie/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching movie details:', error);
+        throw error;
+    }
+};
