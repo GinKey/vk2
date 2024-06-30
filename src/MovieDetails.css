@@ -1,5 +1,6 @@
 .movie-details {
     display: flex;
+    flex-direction: column;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -9,9 +10,9 @@
 }
 
 .movie-poster {
-    max-width: 300px;
+    max-width: 100%;
     border-radius: 10px;
-    margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .movie-info {
@@ -35,4 +36,28 @@
 .movie-info .genres {
     margin-top: 10px;
     font-size: 14px;
+}
+
+@media (min-width: 600px) {
+    .movie-details {
+        flex-direction: row;
+    }
+
+    .movie-poster {
+        max-width: 300px;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+
+    .movie-info h2 {
+        font-size: 24px;
+    }
+
+    .movie-info .description {
+        font-size: 16px;
+    }
+
+    .movie-info p, .movie-info .genres {
+        font-size: 14px;
+    }
 }
