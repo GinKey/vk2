@@ -7,6 +7,7 @@ const MovieDetails = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
 
     useEffect(() => {
         const getMovieDetails = async () => {
@@ -24,6 +25,19 @@ const MovieDetails = () => {
         getMovieDetails();
     }, [id]);
 
+
+    const isFavorite = favorites.some(fav => fav.id === movie?.id);
+
+    const toggleFavorite = () => {
+        let newFavorites;
+        if (isFavorite) {
+            newFavorites = favorites.filter(fav => fav.id !== movie.id);
+        } else {
+            newFavorites = [...favorites, movie];
+        }
+        setFavorites(newFavorites);
+        localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    };
     if (loading) return <div>Loading...</div>;
 
     return (
@@ -38,6 +52,9 @@ const MovieDetails = () => {
                     <strong>Жанры: </strong>
                     {movie.genres.map((genre) => genre.name).join(', ')}
                 </div>
+                <button className="favorite-button" onClick={toggleFavorite}>
+                    {isFavorite ? 'Удалить из избранных' : 'Добавить в избранное'}
+                </button>
             </div>
         </div>
     );

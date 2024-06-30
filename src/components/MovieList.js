@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { fetchMovies } from '../services/api';
 import Logo from './Logo';
 import '../styles.css';
+import FavouriteButton from "./FavouriteButton";
 
 const MovieList = () => {
     const [movies, setMovies] = useState([]);
@@ -71,6 +72,7 @@ const MovieList = () => {
     return (
         <div>
             <Logo />
+            <FavouriteButton />
             <div className="filters">
                 <div>
                     <h3>Жанры</h3>
