@@ -13,7 +13,7 @@ const Favorites = () => {
 
     return (
         <div>
-            <h1>Список избранных</h1>
+            <h1 className="logo">Список избранных</h1>
             <div className="movie-list">
                 {favorites.length > 0 ? (
                     favorites.map((movie, index) => (
