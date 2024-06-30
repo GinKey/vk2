@@ -15,20 +15,27 @@ const api = axios.create({
     },
 });
 
-
-export const fetchMovies = async (page = 1) => {
+export const fetchMovies = async (page = 1, selectedGenres = [], ratingRange = [5, 10], yearRange = [1990, new Date().getFullYear()]) => {
     try {
-        const response = await api.get('/movie', {
-            params: {
-                limit: 50,
-                page,
-                notNullFields: ['id', 'name', 'rating.kp', 'logo.url'],
-                'rating.kp': '5-10',
-                sortField: ['rating.kp'],
-                sortType: ['-1'],
-                type: ['movie']
-            },
-        });
+        const params = {
+            limit: 50,
+            page,
+            notNullFields: ['id', 'name', 'rating.kp', 'logo.url'],
+            'rating.kp': `${ratingRange[0]}-${ratingRange[1]}`,
+            sortField: ['rating.kp'],
+            sortType: ['-1'],
+            type: ['movie']
+        };
+
+        if (selectedGenres.length > 0) {
+            params['genres.name'] = selectedGenres.join(',');
+        }
+
+        if (yearRange) {
+            params.year = `${yearRange[0]}-${yearRange[1]}`;
+        }
+
+        const response = await api.get('/movie', { params });
         console.log('API Response:', response.data);
         return response.data.docs || [];
     } catch (error) {
@@ -36,6 +43,7 @@ export const fetchMovies = async (page = 1) => {
         throw error;
     }
 };
+
 
 export const searchMovies = async (query, page = 1) => {
     try {
