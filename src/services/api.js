@@ -28,7 +28,7 @@ export const fetchMovies = async (page = 1, selectedGenres = [], ratingRange = [
         };
 
         if (selectedGenres.length > 0) {
-            params['genres.name'] = selectedGenres.join(',');
+            params['genres.name'] = selectedGenres
         }
 
         if (yearRange) {
@@ -40,23 +40,6 @@ export const fetchMovies = async (page = 1, selectedGenres = [], ratingRange = [
         return response.data.docs || [];
     } catch (error) {
         console.error('Error fetching movies:', error.response ? error.response.data : error.message);
-        throw error;
-    }
-};
-
-
-export const searchMovies = async (query, page = 1) => {
-    try {
-        const response = await api.get('/movie/search', {
-            params: {
-                query,
-                limit: 50,
-                page,
-            },
-        });
-        return response.data.docs || [];
-    } catch (error) {
-        console.error('Error searching movies:', error.response ? error.response.data : error.message);
         throw error;
     }
 };
