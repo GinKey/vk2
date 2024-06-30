@@ -18,13 +18,13 @@ VK Cinema - это веб-приложение для поиска и фильт
 1. Клонируйте репозиторий на локальную машину:
 
     ```sh
-    git clone https://github.com/ваш-логин/vk-cinema.git
+    git clone https://github.com/GinKey/vk2.git
     ```
 
 2. Перейдите в директорию проекта:
 
     ```sh
-    cd vk-cinema
+    cd vk2
     ```
 
 3. Установите зависимости:
