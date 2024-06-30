@@ -9,7 +9,7 @@ const MovieList = () => {
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
     const [error, setError] = useState(null);
-    const [genres, setGenres] = useState(['драма', 'комедия', 'боевик', 'ужасы', 'фэнтези', 'криминал', 'мелодрама']);
+    const [genres, setGenres] = useState(['драма', 'комедия', 'боевик', 'ужасы', 'фэнтези', 'криминал', 'мелодрама', 'военные']);
     const [selectedGenres, setSelectedGenres] = useState([]);
     const [ratingRange, setRatingRange] = useState([5, 10]);
     const [yearRange, setYearRange] = useState([1990, new Date().getFullYear()]);
