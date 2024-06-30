@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieDetails } from '../services/api';
+import '../MovieDetails.css';
 
 const MovieDetails = () => {
     const { id } = useParams();
@@ -26,13 +27,19 @@ const MovieDetails = () => {
     if (loading) return <div>Loading...</div>;
 
     return (
-        <div>
-            <img src={movie.poster?.previewUrl} alt={movie.name} />
-            <h2>{movie.name}</h2>
-            <p>{movie.description}</p>
-            <p>{movie.year}</p>
-            <p>{movie.rating?.kp}</p>
-            <p>{movie.premiere?.world}</p>
+        <div className="movie-details">
+            <img className="movie-poster" src={movie.poster?.previewUrl} alt={movie.name} />
+            <div className="movie-info">
+                <h2>{movie.name}</h2>
+                <p className="description">{movie.description}</p>
+                <p><strong>Year:</strong> {movie.year}</p>
+                <p><strong>Rating:</strong> {movie.rating?.kp}</p>
+                <p><strong>Premiere:</strong> {new Date(movie.premiere?.world).toLocaleDateString()}</p>
+                <div className="genres">
+                    <strong>Genres: </strong>
+                    {movie.genres.map((genre) => genre.name).join(', ')}
+                </div>
+            </div>
         </div>
     );
 };
