@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# VK Cinema
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+VK Cinema - это веб-приложение для поиска и фильтрации фильмов с использованием API. Приложение позволяет пользователям искать фильмы, фильтровать их по жанру, рейтингу и году выпуска, а также просматривать подробную информацию о фильме.
 
-## Available Scripts
+## Начало работы
 
-In the project directory, you can run:
+Эти инструкции помогут вам запустить проект на локальной машине для целей разработки и тестирования.
 
-### `npm start`
+### Предварительные требования
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Убедитесь, что у вас установлены следующие программные компоненты:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Node.js](https://nodejs.org/en/download/) (версия 12 или выше)
+- [npm](https://www.npmjs.com/get-npm) (обычно устанавливается вместе с Node.js)
 
-### `npm test`
+### Установка
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Клонируйте репозиторий на локальную машину:
 
-### `npm run build`
+    ```sh
+    git clone https://github.com/ваш-логин/vk-cinema.git
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Перейдите в директорию проекта:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ```sh
+    cd vk-cinema
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Установите зависимости:
 
-### `npm run eject`
+    ```sh
+    npm install
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Запуск приложения
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Запустите сервер разработки:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```sh
+    npm start
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Откройте браузер и перейдите по адресу [http://localhost:3000](http://localhost:3000), чтобы увидеть приложение.
 
-## Learn More
+## Использование
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Главная страница
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+На главной странице вы можете:
+- Использовать фильтры для поиска фильмов по жанру, рейтингу и году выпуска.
+- Нажимать на кнопку "Apply Filters", чтобы применить выбранные фильтры.
+- Просматривать список фильмов и переходить на страницу с подробной информацией о фильме, нажав на название фильма.
 
-### Code Splitting
+### Страница деталей фильма
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+На странице деталей фильма отображается:
+- Постер фильма.
+- Название фильма.
+- Описание фильма.
+- Год выпуска.
+- Рейтинг.
+- Дата премьеры.
+- Жанры фильма.
 
-### Analyzing the Bundle Size
+## Структура проекта
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- `src/`
+    - `components/`
+        - `MovieList.js` - Компонент для отображения списка фильмов.
+        - `MovieDetails.js` - Компонент для отображения деталей фильма.
+        - `Logo.js` - Компонент для отображения логотипа.
+    - `services/`
+        - `api.js` - Модуль для взаимодействия с API.
+    - `App.js` - Основной компонент приложения.
+    - `index.js` - Точка входа в приложение.
+    - `styles.css` - Основные стили для приложения.
+    - `MovieDetails.css` - Стили для страницы деталей фильма.
 
-### Making a Progressive Web App
+## Развертывание
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Для развертывания проекта на продакшн сервере выполните следующую команду:
 
-### Advanced Configuration
+```sh
+npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -2,7 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 
 
-const API_KEY = 'Q1S3MV9-5K6MT3Y-GD5T16Q-VVTEA81';
+const API_KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = 'https://api.kinopoisk.dev/v1.4';
 
 const api = axios.create({
